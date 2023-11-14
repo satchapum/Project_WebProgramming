@@ -1,7 +1,8 @@
 function checkCookie() {
     var username = "";
     if (getCookie("username") == false) {
-      window.location = "Login.html";
+      document.cookie = "username=Guest";
+      document.cookie = "img=avatar.png";
     }
   }
   
@@ -21,7 +22,7 @@ function checkCookie() {
     }
   }
   
-  function pageLoad() {
+  async function pageLoad() {
     if(getCookie("username") === "Guest"){
       document.getElementById("username").innerText = "Guest";
     }
