@@ -26,7 +26,7 @@ function checkCookie() {
       document.getElementById("username").innerText = "Guest";
     }
     //document.getElementById("postbutton").onclick = getData;
-  
+    toggleElement();
     document.getElementById("displayPic").onclick = fileUpload;
     document.getElementById("fileField").onchange = fileSubmit;
   
@@ -35,7 +35,20 @@ function checkCookie() {
     document.getElementById("username").innerHTML = username;
     console.log(getCookie("img"));
     showImg("img/" + getCookie("img"));
-    readPost();
+    // readPost();
+  }
+
+  function toggleElement(){
+    var loginAndRegisterButton = document.getElementById("RegisterAndLoginButton");
+    var logoutButton = document.getElementById("LogoutButton");
+    if(getCookie("username") != "Guest"){
+      loginAndRegisterButton.style.display = "none";
+      logoutButton.style.display = "block";
+    }
+    else{
+      loginAndRegisterButton.style.display = "block";
+      logoutButton.style.display = "none";
+    }
   }
   
   async function getData() {
