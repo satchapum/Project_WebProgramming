@@ -109,11 +109,11 @@ app.get("/logout", (req, res) => {
 });
 
 //ทำให้สมบูรณ์
-app.get("/readPost", async (req, res) => {
+app.get("/readComment", async (req, res) => {
   let sql =
-    "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+    "CREATE TABLE IF NOT EXISTS userComment (username VARCHAR(255), post VARCHAR(500))";
   let result = await queryDB(sql);
-  sql = `SELECT post, username FROM userPost`;
+  sql = `SELECT post, username FROM userComment`;
   result = await queryDB(sql);
   result = Object.assign({}, result);
   console.log(result);
@@ -121,11 +121,11 @@ app.get("/readPost", async (req, res) => {
 });
 
 //ทำให้สมบูรณ์
-app.post("/writePost", async (req, res) => {
+app.post("/writeComment", async (req, res) => {
   let sql =
-    "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+    "CREATE TABLE IF NOT EXISTS userComment (username VARCHAR(255), post VARCHAR(500))";
   let result = await queryDB(sql);
-  sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
+  sql = `INSERT INTO userComment (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
   result = await queryDB(sql);
   res.redirect("Index.html");
 });
@@ -154,10 +154,6 @@ app.post("/checkLogin", async (req, res) => {
     console.log("login failed");
     return res.redirect("Login.html?error=1");
   }
-  // ถ้าเช็คแล้ว username และ password ถูกต้อง
-  // return res.redirect('feed.html');
-  // ถ้าเช็คแล้ว username และ password ไม่ถูกต้อง
-  // return res.redirect('login.html?error=1')
 });
 
 app.listen(port, hostname, () => {

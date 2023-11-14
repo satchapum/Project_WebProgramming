@@ -79,14 +79,14 @@ function checkCookie() {
   
   // complete it
   async function readPost() {
-    let response = await fetch("/readPost");
+    let response = await fetch("/readComment");
     let content = await response.json();
     showPost(content);
   }
   
   // complete it
   async function writePost(msg) {
-    let response = await fetch("/writePost", {
+    let response = await fetch("/writeComment", {
       method: "POST",
       headers: {
         Accept: "application/json",
