@@ -22,10 +22,7 @@ function checkCookie() {
   }
   
   function pageLoad() {
-    if(getCookie("username") === "guest"){
-      cookie("username", "guest")
-      cookie("img", "avatar.png")
-      console.log(getCookie("username"));
+    if(getCookie("username") === "Guest"){
       document.getElementById("username").innerText = "Guest";
     }
     //document.getElementById("postbutton").onclick = getData;
@@ -92,7 +89,6 @@ function checkCookie() {
   // แสดง post ที่อ่านมาได้ ลงในพื้นที่ที่กำหนด
   function showPost(data) {
     var keys = Object.keys(data);
-    console.log(keys);
     var divTag = document.getElementById("feed-container");
     divTag.innerHTML = "";
     for (var i = keys.length - 1; i >= 0; i--) {

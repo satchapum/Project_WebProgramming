@@ -43,7 +43,7 @@ const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "mydb",
+  database: "browsergame_database",
 });
 
 con.connect((err) => {
@@ -91,7 +91,7 @@ app.post("/profilepic", async (req, res) => {
     }
     updateImg(req.cookies.username, req.file.filename);
     res.cookie("img", req.file.filename);
-    return res.redirect("feed.html");
+    return res.redirect("Index.html");
   });
 });
 
@@ -103,9 +103,9 @@ const updateImg = async (username, filen) => {
 
 //ทำให้สมบูรณ์
 app.get("/logout", (req, res) => {
-  res.clearCookie("username");
-  res.clearCookie("img");
-  return res.redirect("login.html");
+  res.cookie("username", "Guest");
+  res.cookie("img", "avatar.png");
+  return res.redirect("Index.html");
 });
 
 //ทำให้สมบูรณ์
