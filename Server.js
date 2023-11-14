@@ -43,7 +43,7 @@ const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "browsergame_database",
+  database: "mydb",
 });
 
 con.connect((err) => {
@@ -55,6 +55,7 @@ con.connect((err) => {
 
 const queryDB = (sql) => {
   return new Promise((resolve, reject) => {
+    // query method
     con.query(sql, (err, result, fields) => {
       if (err) reject(err);
       else resolve(result);
@@ -62,6 +63,7 @@ const queryDB = (sql) => {
   });
 };
 
+//ทำให้สมบูรณ์
 app.post("/regisDB", async (req, res) => {
   let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
   let sql =
@@ -72,6 +74,7 @@ app.post("/regisDB", async (req, res) => {
   return res.redirect("login.html");
 });
 
+//ทำให้สมบูรณ์
 app.post("/profilepic", async (req, res) => {
   let upload = multer({ storage: storage, fileFilter: imageFilter }).single(
     "avatar"
@@ -98,12 +101,14 @@ const updateImg = async (username, filen) => {
   console.log(result);
 };
 
+//ทำให้สมบูรณ์
 app.get("/logout", (req, res) => {
   res.clearCookie("username");
   res.clearCookie("img");
   return res.redirect("login.html");
 });
 
+//ทำให้สมบูรณ์
 app.get("/readPost", async (req, res) => {
   let sql =
     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
@@ -115,6 +120,7 @@ app.get("/readPost", async (req, res) => {
   res.json(result);
 });
 
+//ทำให้สมบูรณ์
 app.post("/writePost", async (req, res) => {
     let sql =
     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
@@ -124,6 +130,7 @@ app.post("/writePost", async (req, res) => {
   res.redirect("feed.html");
 });
 
+//ทำให้สมบูรณ์
 app.post("/checkLogin", async (req, res) => {
     let sql = `SELECT username, img, password FROM userInfo`;
     let result = await queryDB(sql);
@@ -139,8 +146,6 @@ app.post("/checkLogin", async (req, res) => {
       res.cookie("username", result[keys[numberOfKeys]].username);
       res.cookie("img", result[keys[numberOfKeys]].img);
       IsCorrect = true;
-
-      //Changename
       return res.redirect("feed.html");
     }
   }
@@ -149,8 +154,12 @@ app.post("/checkLogin", async (req, res) => {
     console.log("login failed");
     return res.redirect("index.html?error=1");
   }
+  // ถ้าเช็คแล้ว username และ password ถูกต้อง
+  // return res.redirect('feed.html');
+  // ถ้าเช็คแล้ว username และ password ไม่ถูกต้อง
+  // return res.redirect('login.html?error=1')
 });
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at   http://${hostname}:${port}/register.html`);
+  console.log(`Server running at   http://${hostname}:${port}/Register.html`);
 });
