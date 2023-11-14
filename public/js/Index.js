@@ -1,7 +1,7 @@
 function checkCookie() {
     var username = "";
     if (getCookie("username") == false) {
-      window.location = "login.html";
+      window.location = "Login.html";
     }
   }
   

@@ -122,22 +122,22 @@ app.get("/readPost", async (req, res) => {
 
 //ทำให้สมบูรณ์
 app.post("/writePost", async (req, res) => {
-    let sql =
+  let sql =
     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
   let result = await queryDB(sql);
   sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
   result = await queryDB(sql);
-  res.redirect("feed.html");
+  res.redirect("Index.html");
 });
 
 //ทำให้สมบูรณ์
 app.post("/checkLogin", async (req, res) => {
-    let sql = `SELECT username, img, password FROM userInfo`;
-    let result = await queryDB(sql);
-    result = Object.assign({},result);
-     var keys = Object.keys(result);
-    var IsCorrect = false;
-    for (var numberOfKeys = 0; numberOfKeys < keys.length; numberOfKeys++) {
+  let sql = `SELECT username, img, password FROM userInfo`;
+  let result = await queryDB(sql);
+  result = Object.assign({}, result);
+  var keys = Object.keys(result);
+  var IsCorrect = false;
+  for (var numberOfKeys = 0; numberOfKeys < keys.length; numberOfKeys++) {
     if (
       req.body.username == result[keys[numberOfKeys]].username &&
       req.body.password == result[keys[numberOfKeys]].password
@@ -146,13 +146,13 @@ app.post("/checkLogin", async (req, res) => {
       res.cookie("username", result[keys[numberOfKeys]].username);
       res.cookie("img", result[keys[numberOfKeys]].img);
       IsCorrect = true;
-      return res.redirect("feed.html");
+      return res.redirect("Index.html");
     }
   }
   if (IsCorrect == false) {
     IsCorrect = false;
     console.log("login failed");
-    return res.redirect("index.html?error=1");
+    return res.redirect("Login.html?error=1");
   }
   // ถ้าเช็คแล้ว username และ password ถูกต้อง
   // return res.redirect('feed.html');
@@ -161,5 +161,5 @@ app.post("/checkLogin", async (req, res) => {
 });
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at   http://${hostname}:${port}/Register.html`);
+  console.log(`Server running at   http://${hostname}:${port}/Index.html`);
 });
