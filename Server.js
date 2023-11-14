@@ -109,24 +109,29 @@ app.get("/logout", (req, res) => {
 });
 
 //ทำให้สมบูรณ์
-app.get("/readComment", async (req, res) => {
-  let sql = `SELECT post, username FROM ${req.body.tablename}`;
+app.post("/readComment", async (req, res) => {
+  let sql =
+    'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), comment_text VARCHAR(500))';
   let result = await queryDB(sql);
+  sql = `SELECT comment_text, username FROM ${req.body.tablename}`;
+  result = await queryDB(sql);
   result = Object.assign({}, result);
-  console.log(result);
   res.json(result);
 });
 
 //ทำให้สมบูรณ์
 app.post("/writeComment", async (req, res) => {
-  console.log("write");
-  let sql = `INSERT INTO ${req.body.tablename} (username,comment_text) VALUES ("${req.body.user}", "${req.body.message}")`;
+  let sql =
+    'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), comment_text VARCHAR(500))';
   let result = await queryDB(sql);
+  sql = `INSERT INTO ${req.body.tablename} (username,comment_text) VALUES ("${req.body.user}", "${req.body.message}")`;
+  result = await queryDB(sql);
   res.redirect("Index.html");
 });
 
 //ทำให้สมบูรณ์
 app.post("/checkLogin", async (req, res) => {
+
   let sql = `SELECT username, img, password FROM userInfo`;
   let result = await queryDB(sql);
   result = Object.assign({}, result);

@@ -27,7 +27,6 @@ async function pageLoad() {
     document.getElementById("username").innerText = 'Guest';
   }
 
-  // document.getElementById("postbutton").onclick = getData;
   toggleElement();
   document.getElementById("displayPic").onclick = fileUpload;
   document.getElementById("fileField").onchange = fileSubmit;
@@ -35,9 +34,7 @@ async function pageLoad() {
   var username = getCookie("username");
 
   document.getElementById("username").innerHTML = username;
-  console.log(getCookie("img"));
   showImg("img/" + getCookie("img"));
-  // readPost();
 }
 
 function toggleElement() {
@@ -54,8 +51,6 @@ function toggleElement() {
 }
 
 async function getData(tablename, textmsg) {
-  console.log(tablename);
-  console.log(textmsg);
   var msg = document.getElementById(textmsg).value;
   document.getElementById(textmsg).value = "";
   await writePost(msg, tablename);
@@ -83,9 +78,18 @@ function showImg(filename) {
 
 // complete it
 async function readPost(tablename) {
-  let response = await fetch("/readComment");
+  let response = await fetch("/readComment", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      tablename: tablename,
+    }),
+  });
   let content = await response.json();
-  showPost(content);
+  showPost(content,tablename);
 }
 
 // complete it
@@ -105,9 +109,9 @@ async function writePost(msg, tablename) {
 }
 
 // แสดง post ที่อ่านมาได้ ลงในพื้นที่ที่กำหนด
-function showPost(data) {
+function showPost(data, tablename) {
   var keys = Object.keys(data);
-  var divTag = document.getElementById("feed-container");
+  var divTag = document.getElementById(tablename +"_"+"feed-container");
   divTag.innerHTML = "";
   for (var i = keys.length - 1; i >= 0; i--) {
     var temp = document.createElement("div");
@@ -115,7 +119,7 @@ function showPost(data) {
     divTag.appendChild(temp);
     var temp1 = document.createElement("div");
     temp1.className = "postmsg";
-    temp1.innerHTML = data[keys[i]]["post"];
+    temp1.innerHTML = data[keys[i]]["comment_text"];
     temp.appendChild(temp1);
     var temp1 = document.createElement("div");
     temp1.className = "postuser";
