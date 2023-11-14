@@ -22,7 +22,13 @@ function checkCookie() {
   }
   
   function pageLoad() {
-    document.getElementById("postbutton").onclick = getData;
+    if(getCookie("username") === "guest"){
+      cookie("username", "guest")
+      cookie("img", "avatar.png")
+      console.log(getCookie("username"));
+      document.getElementById("username").innerText = "Guest";
+    }
+    //document.getElementById("postbutton").onclick = getData;
   
     document.getElementById("displayPic").onclick = fileUpload;
     document.getElementById("fileField").onchange = fileSubmit;
