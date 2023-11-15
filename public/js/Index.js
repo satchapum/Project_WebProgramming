@@ -146,6 +146,9 @@ function showPost(data, tablename) {
 function showLeaderboardName(data, tablename) {
   var numberOfLeaderboard = 3;
   var keys = Object.keys(data);
+  if(keys.length < numberOfLeaderboard){
+    numberOfLeaderboard = keys.length;
+  }
   for (var i = 0; i < numberOfLeaderboard; i++) {
     var currentnum = i+1;
     console.log(tablename + "_" + currentnum);
