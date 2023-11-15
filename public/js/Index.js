@@ -76,6 +76,21 @@ function showImg(filename) {
   }
 }
 
+async function readLeaderboardName(tablename) {
+  let response = await fetch("/readLeaderboardname", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      tablename: tablename,
+    }),
+  });
+  let content = await response.json();
+  showLeaderboardName(content, tablename);
+}
+
 // complete it
 async function readPost(tablename) {
   let response = await fetch("/readComment", {
@@ -89,7 +104,7 @@ async function readPost(tablename) {
     }),
   });
   let content = await response.json();
-  showPost(content,tablename);
+  showPost(content, tablename);
 }
 
 // complete it
@@ -111,7 +126,7 @@ async function writePost(msg, tablename) {
 // แสดง post ที่อ่านมาได้ ลงในพื้นที่ที่กำหนด
 function showPost(data, tablename) {
   var keys = Object.keys(data);
-  var divTag = document.getElementById(tablename +"_"+"feed-container");
+  var divTag = document.getElementById(tablename + "_" + "feed-container");
   divTag.innerHTML = "";
   for (var i = keys.length - 1; i >= 0; i--) {
     var temp = document.createElement("div");
@@ -125,6 +140,23 @@ function showPost(data, tablename) {
     temp1.className = "postuser";
 
     temp1.innerHTML = "Posted by: " + data[keys[i]]["username"];
+    temp.appendChild(temp1);
+  }
+}
+function showLeaderboardName(data, tablename) {
+  var numberOfLeaderboard = 3;
+  var keys = Object.keys(data);
+  for (var i = 0; i < numberOfLeaderboard; i++) {
+    var currentnum = i+1;
+    console.log(tablename + "_" + currentnum);
+    var divTag = document.getElementById(tablename + "_" + currentnum);
+    divTag.innerHTML = "";
+    var temp = document.createElement("div");
+    temp.className = "LeaderBoardNumber";
+    divTag.appendChild(temp);
+    var temp1 = document.createElement("H1");
+    temp1.className = "LeaderBoardNumber" + currentnum;
+    temp1.innerHTML = data[keys[i]]["username"] + "  " + "Score : " + data[keys[i]]["score"] + "  " + "Like : " + data[keys[i]]["like_love"]
     temp.appendChild(temp1);
   }
 }

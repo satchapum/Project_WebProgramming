@@ -101,14 +101,12 @@ const updateImg = async (username, filen) => {
   console.log(result);
 };
 
-//ทำให้สมบูรณ์
 app.get("/logout", (req, res) => {
   res.cookie("username", "Guest");
   res.cookie("img", "avatar.png");
   return res.redirect("Index.html");
 });
 
-//ทำให้สมบูรณ์
 app.post("/readComment", async (req, res) => {
   let sql =
     'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), comment_text VARCHAR(500))';
@@ -119,7 +117,6 @@ app.post("/readComment", async (req, res) => {
   res.json(result);
 });
 
-//ทำให้สมบูรณ์
 app.post("/writeComment", async (req, res) => {
   let sql =
     'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), comment_text VARCHAR(500))';
@@ -127,6 +124,43 @@ app.post("/writeComment", async (req, res) => {
   sql = `INSERT INTO ${req.body.tablename} (username,comment_text) VALUES ("${req.body.user}", "${req.body.message}")`;
   result = await queryDB(sql);
   res.redirect("Index.html");
+});
+
+app.post("/readLeaderboardname", async (req, res) => {
+  let sql =
+    'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), score INT(10), like_love INT(100))';
+  let result = await queryDB(sql);
+  sql = `SELECT username, score, like_love FROM ${req.body.tablename} ORDER BY length(score) DESC,score DESC`; 
+  result = await queryDB(sql);
+  result = Object.assign({}, result);
+  res.json(result);
+});
+
+app.post("/writeLeaderboardname", async (req, res) => {
+  let sql =
+    'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), score INT(10), like_love INT(100))';
+  let result = await queryDB(sql);
+
+  sql = ('SELECT * FROM' + ' ' + req.body.tablename + ' ' + ' WHERE username = ?', [username], (err, rows) => {
+    if (err) throw err;
+
+    if (rows.length > 0) {
+      // Username exists, update the score if it's higher.
+      connection.query(
+        'UPDATE ' + ' ' + req.body.tablename + ' ' + ' SET score = ? WHERE username = ? AND score < ?',
+        [req.body.score, username, req.body.score],
+        (updateErr, updateResult) => {
+          if (updateErr) throw updateErr;
+
+          // Send a response back to the client.
+          console.log("Score updated successfully")
+        }
+      );
+    } else {
+      // Username doesn't exist.
+      console.log("user not found")
+    }
+  });
 });
 
 //ทำให้สมบูรณ์

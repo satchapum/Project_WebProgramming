@@ -13,6 +13,7 @@
         <script>readPost("snakegamecomment_1")</script>
         <script>readPost("snakegamecomment_2")</script>
         <script>readPost("snakegamecomment_3")</script>
+        <script>readLeaderboardName("snakegameleaderboard")</script>
         <a href="Register.html"><button>Register</button></a>
         <a href="Login.html"><button>Login</button></a>
 		</div>
@@ -34,7 +35,7 @@
         </div>
     </div>
     <div id="leader_Board_1">
-        <h1>Number 1</h1>
+        <div id="snakegameleaderboard_1"><h1>Number 1</h1></div>
         <textarea name="msg" id="textmsg_1" value="" placeholder="" rows="4" cols="50"></textarea>
         <br>
         <button id="snakegamecomment_1" onClick="getData(this.id, 'textmsg_1')">Post</button>
@@ -43,8 +44,9 @@
     <div id="snakegamecomment_1_feed-container">
 
     </div>
+    <hr>
     <div id="leader_Board_2">
-        <h1>Number 2</h1>
+        <div id="snakegameleaderboard_2"><h1>Number 2</h1></div>
         <textarea name="msg" id="textmsg_2" value="" placeholder="" rows="4" cols="50"></textarea>
         <br>
         <button id="snakegamecomment_2" onClick="getData(this.id, 'textmsg_2')">Post</button>
@@ -53,8 +55,9 @@
     <div id="snakegamecomment_2_feed-container">
 
     </div>
+    <hr>
     <div id="leader_Board_3">
-        <h1>Number 3</h1>
+        <div id="snakegameleaderboard_3"><h1>Number 3</h1></div>
         <textarea name="msg" id="textmsg_3" value="" placeholder="" rows="4" cols="50"></textarea>
         <br>
         <button id="snakegamecomment_3" onClick="getData(this.id, 'textmsg_3')">Post</button>
@@ -63,5 +66,6 @@
     <div id="snakegamecomment_3_feed-container">
 
     </div>
+    <hr>
 </body>
 </html>
