@@ -56,24 +56,6 @@
   <p id="p2">High Score:<span id="high"></span></p>
   <canvas width="400" height="400" id="game"></canvas>
   <script>
-    const express = require("express");
-    const app = express();
-    const fs = require("fs");
-    const hostname = "localhost";
-    const port = 3000;
-    const bodyParser = require("body-parser");
-    var cookieParser = require("cookie-parser");
-    const multer = require("multer");
-    const path = require("path");
-    const mysql = require("mysql");
-    const { userInfo } = require("os");
-    const { constrainedMemory } = require("process");
-
-    app.use(express.static("public"));
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(cookieParser());
-
     var canvas = document.getElementById('game');
     var context = canvas.getContext('2d');
     var grid = 16;
@@ -162,7 +144,7 @@
           if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
             if (score > max) {
               max = score;
-              readLeaderboardName("snakegameleaderboard", max);
+              writeLeaderboardname("snakegameleaderboard", score);
 
             }
             snake.x = 160;
@@ -179,7 +161,21 @@
         }
       });
     }
-    async function readLeaderboardName(tablename, scorenew) {
+
+    function getCookie(name) {
+      var value = "";
+      try {
+        value = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith(name))
+          .split("=")[1];
+        return value;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    async function writeLeaderboardname(tablename, scorenew) {
       let response = await fetch("/writeLeaderboardname", {
         method: "POST",
         headers: {
@@ -187,13 +183,13 @@
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user: getCookie("username"),
+          username: getCookie("username"),
           score: scorenew,
           tablename: tablename,
         }),
       });
       let content = await response.json();
-      showLeaderboardName(content, tablename);
+      
     }
     // listen to keyboard events to move the snake
     document.addEventListener('keydown', function (e) {
