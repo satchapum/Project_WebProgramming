@@ -165,45 +165,35 @@ app.post("/readLeaderboardname", async (req, res) => {
 // });
 
 app.post('/writeLeaderboardname', async (req, res) => {
-  console.log(req.body.tablename);
   let createTableSQL =
     'CREATE TABLE IF NOT EXISTS ' + req.body.tablename + ' (username VARCHAR(500), score INT(10), like_love INT(100))';
   await queryDB(createTableSQL);
 
   const { username, score } = req.body;
 
-  // Check if the username exists in the database.
   con.query('SELECT * FROM ' + req.body.tablename + ' WHERE username = ?', [username], (err, rows) => {
     if (err) throw err;
 
     if (rows.length > 0) {
-      // Username exists, update the score if it's higher.
       con.query(
         'UPDATE ' + req.body.tablename + ' SET score = ? WHERE username = ? AND score < ?',
         [score, username, score],
         (updateErr, updateResult) => {
           if (updateErr) throw updateErr;
 
-          // Send a response back to the client.
           console.log("Score updated successfully");
-          res.json({ success: true, message: 'Score updated successfully.' });
         }
       );
     } else {
-      // Username doesn't exist.
       if (username && score !== null && score !== undefined) {
         let insertSQL = `INSERT INTO ${req.body.tablename} (username, score, like_love) VALUES (?, ?, 0)`;
         con.query(insertSQL, [username, score], (insertErr, insertResult) => {
           if (insertErr) throw insertErr;
 
-          // Send a response back to the client.
           console.log("New user added successfully");
-          res.json({ success: true, message: 'New user added successfully.' });
         });
       } else {
-        // Handle the case where username or score is null.
         console.log("Username or score is null");
-        res.json({ success: false, message: 'Username or score is null.' });
       }
     }
   });

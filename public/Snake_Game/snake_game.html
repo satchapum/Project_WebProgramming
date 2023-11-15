@@ -176,6 +176,11 @@
     }
 
     async function writeLeaderboardname(tablename, scorenew) {
+      if (getCookie("username") === "Guest") {
+        alert('Pls login to play');
+        return;
+      }
+
       let response = await fetch("/writeLeaderboardname", {
         method: "POST",
         headers: {
@@ -188,8 +193,9 @@
           tablename: tablename,
         }),
       });
-      let content = await response.json();
-      
+      let content = response.Text;
+      alert(content);
+
     }
     // listen to keyboard events to move the snake
     document.addEventListener('keydown', function (e) {
