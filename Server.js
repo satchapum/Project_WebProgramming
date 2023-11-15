@@ -30,7 +30,6 @@ const storage = multer.diskStorage({
 });
 
 const imageFilter = (req, file, cb) => {
-  // Accept images only
   if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
     req.fileValidationError = "Only image files are allowed!";
     return cb(new Error("Only image files are allowed!"), false);
@@ -38,7 +37,6 @@ const imageFilter = (req, file, cb) => {
   cb(null, true);
 };
 
-// ใส่ค่าตามที่เราตั้งไว้ใน mysql
 const con = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -55,7 +53,6 @@ con.connect((err) => {
 
 const queryDB = (sql) => {
   return new Promise((resolve, reject) => {
-    // query method
     con.query(sql, (err, result, fields) => {
       if (err) reject(err);
       else resolve(result);
@@ -63,7 +60,6 @@ const queryDB = (sql) => {
   });
 };
 
-//ทำให้สมบูรณ์
 app.post("/regisDB", async (req, res) => {
   let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
   let sql =
@@ -126,6 +122,25 @@ app.post("/writeComment", async (req, res) => {
   res.redirect("Index.html");
 });
 
+app.post("/addLikeToUser", async (req, res) => {
+  let sql = `SELECT username, score, like_love FROM ${req.body.tablename} ORDER BY length(score) DESC, score DESC`; 
+  let result = await queryDB(sql);
+  
+  if(result.length == 2 && req.body.numberOfPos == 2){
+    return;
+  }
+  else if(result.length == 1 && req.body.numberOfPos == 1){
+    return;
+  }
+  let userToUpdate = result[req.body.numberOfPos];
+
+  let updatedLikeLove = userToUpdate.like_love + req.body.numberOfLike;
+
+  sql = `UPDATE ${req.body.tablename} SET like_love = ${updatedLikeLove} WHERE username = '${userToUpdate.username}'`;
+  result = await queryDB(sql);
+  res.end();
+});
+
 app.post("/readLeaderboardname", async (req, res) => {
   let sql =
     'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), score INT(10), like_love INT(100))';
@@ -135,34 +150,6 @@ app.post("/readLeaderboardname", async (req, res) => {
   result = Object.assign({}, result);
   res.json(result);
 });
-
-// app.post("/writeLeaderboardname", async (req, res) => {
-//   let sql =
-//     'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), score INT(10), like_love INT(100))';
-//   let result = await queryDB(sql);
-//   console.log("Write")
-//   sql = ('SELECT * FROM' + ' ' + req.body.tablename + ' ' + ' WHERE username = ?', [req.body.username], (err, rows) => {
-//     if (err) throw err;
-
-//     if (rows.length > 0) {
-//       // Username exists, update the score if it's higher.
-//       connection.query(
-//         'UPDATE ' + ' ' + req.body.tablename + ' ' + ' SET score = ? WHERE username = ? AND score < ?',
-//         [req.body.score, username, req.body.score],
-//         (updateErr, updateResult) => {
-//           if (updateErr) throw updateErr;
-
-//           // Send a response back to the client.
-//           console.log("Score updated successfully")
-//         }
-//       );
-//     } else {
-//       // Username doesn't exist.
-//       sql = `INSERT INTO ${req.body.tablename} (username,score,like_love) VALUES ("${req.body.username}", "${req.body.score}",)`;
-//       console.log("user not found")
-//     }
-//   });
-// });
 
 app.post('/writeLeaderboardname', async (req, res) => {
   let createTableSQL =
@@ -199,7 +186,6 @@ app.post('/writeLeaderboardname', async (req, res) => {
   });
 });
 
-//ทำให้สมบูรณ์
 app.post("/checkLogin", async (req, res) => {
 
   let sql = `SELECT username, img, password FROM userInfo`;
@@ -224,10 +210,6 @@ app.post("/checkLogin", async (req, res) => {
     console.log("login failed");
     return res.redirect("Login.html?error=1");
   }
-  // ถ้าเช็คแล้ว username และ password ถูกต้อง
-  // return res.redirect('feed.html');
-  // ถ้าเช็คแล้ว username และ password ไม่ถูกต้อง
-  // return res.redirect('login.html?error=1')
 });
 
 app.listen(port, hostname, () => {

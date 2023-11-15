@@ -123,6 +123,31 @@ async function writePost(msg, tablename) {
   });
 }
 
+async function useLikeButton(tablename,numberOfPos) {
+  await likeButtonClick(tablename,numberOfPos)
+  console.log("reload");
+  await reloadPage();
+}
+
+async function likeButtonClick(tablename,numberOfPos) {
+  let response = await fetch("/addLikeToUser", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      tablename: tablename,
+      numberOfLike: 1,
+      numberOfPos : numberOfPos,
+    }),
+  });
+}
+
+function reloadPage() {
+  location.reload();
+}
+
 // แสดง post ที่อ่านมาได้ ลงในพื้นที่ที่กำหนด
 function showPost(data, tablename) {
   var keys = Object.keys(data);

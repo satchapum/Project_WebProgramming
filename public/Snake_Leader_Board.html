@@ -16,26 +16,28 @@
         <script>readLeaderboardName("snakegameleaderboard")</script>
         <a href="Register.html"><button>Register</button></a>
         <a href="Login.html"><button>Login</button></a>
-		</div>
-		<a href="/logout" id = "LogoutButton">Logout</a> </div>
+    </div>
+    <a href="/logout" id="LogoutButton">Logout</a> </div>
     <div class="grid-container">
 
         <div class="item1">
-            
+
             <div id="browsePic">
                 <div id="displayPic">
-                    <img src= "img/avatar.png" alt="">
+                    <img src="img/avatar.png" alt="">
                 </div>
                 <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
                     <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
                 </form>
             </div>
-            
+
             Hello <span id="username"></span>, Welcome back!
         </div>
     </div>
     <div id="leader_Board_1">
-        <div id="snakegameleaderboard_1"><h1>Number 1</h1></div>
+        <div id="snakegameleaderboard_1">
+            <h1>Number 1</h1>
+        </div><span><button id="snakegamecomment_1" onClick="useLikeButton('snakegameleaderboard', 0)">Like</button></span>
         <textarea name="msg" id="textmsg_1" value="" placeholder="" rows="4" cols="50"></textarea>
         <br>
         <button id="snakegamecomment_1" onClick="getData(this.id, 'textmsg_1')">Post</button>
@@ -46,7 +48,9 @@
     </div>
     <hr>
     <div id="leader_Board_2">
-        <div id="snakegameleaderboard_2"><h1>Number 2</h1></div>
+        <div id="snakegameleaderboard_2">
+            <h1>Number 2</h1>
+        </div><span><button id="snakegamecomment_1" onClick="useLikeButton('snakegameleaderboard', 1)">Like</button></span>
         <textarea name="msg" id="textmsg_2" value="" placeholder="" rows="4" cols="50"></textarea>
         <br>
         <button id="snakegamecomment_2" onClick="getData(this.id, 'textmsg_2')">Post</button>
@@ -57,7 +61,9 @@
     </div>
     <hr>
     <div id="leader_Board_3">
-        <div id="snakegameleaderboard_3"><h1>Number 3</h1></div>
+        <div id="snakegameleaderboard_3">
+            <h1>Number 3</h1>
+        </div><span><button id="snakegamecomment_1" onClick="useLikeButton('snakegameleaderboard', 2)">Like</button></span>
         <textarea name="msg" id="textmsg_3" value="" placeholder="" rows="4" cols="50"></textarea>
         <br>
         <button id="snakegamecomment_3" onClick="getData(this.id, 'textmsg_3')">Post</button>
@@ -68,4 +74,5 @@
     </div>
     <hr>
 </body>
+
 </html>
