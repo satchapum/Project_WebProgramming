@@ -60,17 +60,68 @@ const queryDB = (sql) => {
   });
 };
 
+// app.post("/regisDB", async (req, res) => {
+//   let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
+//   let sql =
+//     "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100),password VARCHAR(100),img VARCHAR(100))";
+//   let result = await queryDB(sql);
+//   result = Object.assign({}, result);
+//   if(result.length != 0){
+//     for(var numberOfData = 0; numberOfData < result.length; numberOfData++){
+//       if(result[numberOfData].username == req.body.username){
+//         return res.redirect("register.html?error=1");
+//       }
+//     }
+//     sql = `INSERT INTO userInfo (username, reg_date, email, password, img) VALUES ("${req.body.username}", "${now_date}","${req.body.email}", "${req.body.password}", "avatar.png")`;
+//     result = await queryDB(sql);
+//     return res.redirect("login.html");
+//   }
+//   else{
+//     sql = `INSERT INTO userInfo (username, reg_date, email, password, img) VALUES ("${req.body.username}", "${now_date}","${req.body.email}", "${req.body.password}", "avatar.png")`;
+//     result = await queryDB(sql);
+//     return res.redirect("login.html");
+//   }
+// });
+
 app.post("/regisDB", async (req, res) => {
-  let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
   let sql =
-    "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100),password VARCHAR(100),img VARCHAR(100))";
+  "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100),password VARCHAR(100),img VARCHAR(100))";
   let result = await queryDB(sql);
+  const usernameExists = await checkUsernameExists(req.body.username);
+  const useremailExists = await checkEmailExists(req.body.email);
+
+  if(usernameExists && useremailExists){
+    return res.redirect("register.html?error=4");
+  }
+
+  if (usernameExists) {
+    return res.redirect("register.html?error=2");
+  }
+
+  if (useremailExists) {
+    return res.redirect("register.html?error=3");
+  }
+
+  // If username doesn't exist, proceed with registration
+  let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
   sql = `INSERT INTO userInfo (username, reg_date, email, password, img) VALUES ("${req.body.username}", "${now_date}","${req.body.email}", "${req.body.password}", "avatar.png")`;
   result = await queryDB(sql);
+
   return res.redirect("login.html");
 });
 
-//ทำให้สมบูรณ์
+const checkUsernameExists = async (username) => {
+  const sql = `SELECT * FROM userInfo WHERE username = '${username}'`;
+  const result = await queryDB(sql);
+  return result.length > 0;
+};
+
+const checkEmailExists = async (email) => {
+  const sql = `SELECT * FROM userInfo WHERE email = '${email}'`;
+  const result = await queryDB(sql);
+  return result.length > 0;
+};
+
 app.post("/profilepic", async (req, res) => {
   let upload = multer({ storage: storage, fileFilter: imageFilter }).single(
     "avatar"
@@ -123,13 +174,13 @@ app.post("/writeComment", async (req, res) => {
 });
 
 app.post("/addLikeToUser", async (req, res) => {
-  let sql = `SELECT username, score, like_love FROM ${req.body.tablename} ORDER BY length(score) DESC, score DESC`; 
+  let sql = `SELECT username, score, like_love FROM ${req.body.tablename} ORDER BY length(score) DESC, score DESC`;
   let result = await queryDB(sql);
-  
-  if(result.length == 2 && req.body.numberOfPos == 2){
+
+  if (result.length == 2 && req.body.numberOfPos == 2) {
     return;
   }
-  else if(result.length == 1 && req.body.numberOfPos == 1){
+  else if (result.length == 1 && req.body.numberOfPos == 1) {
     return;
   }
   let userToUpdate = result[req.body.numberOfPos];
@@ -145,7 +196,7 @@ app.post("/readLeaderboardname", async (req, res) => {
   let sql =
     'CREATE TABLE IF NOT EXISTS' + ' ' + req.body.tablename + ' ' + '(username VARCHAR(500), score INT(10), like_love INT(100))';
   let result = await queryDB(sql);
-  sql = `SELECT username, score, like_love FROM ${req.body.tablename} ORDER BY length(score) DESC,score DESC`; 
+  sql = `SELECT username, score, like_love FROM ${req.body.tablename} ORDER BY length(score) DESC,score DESC`;
   result = await queryDB(sql);
   result = Object.assign({}, result);
   res.json(result);
