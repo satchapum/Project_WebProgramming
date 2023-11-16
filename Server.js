@@ -152,6 +152,7 @@ app.post("/readLeaderboardname", async (req, res) => {
 });
 
 app.post('/writeLeaderboardname', async (req, res) => {
+  console.log(req.body.tablename);
   let createTableSQL =
     'CREATE TABLE IF NOT EXISTS ' + req.body.tablename + ' (username VARCHAR(500), score INT(10), like_love INT(100))';
   await queryDB(createTableSQL);
