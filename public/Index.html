@@ -8,44 +8,48 @@
 	</head>
 
 	<body>
-		<div id="RegisterAndLoginButton">
-        <a href="Register.html"><button>Register</button></a>
-        <a href="Login.html"><button>Login</button></a>
-		</div>
-		<a href="/logout" id = "LogoutButton">Logout</a> </div>
 
-        <br>
-        <br>
-        <br>
+			<div class="grid-container">
 
-        <div class="grid-container">
-
-			<div class="item1">
-				
-				<div id="browsePic">
-					<div id="displayPic">
-						<img src= "img/avatar.png" alt="">
+				<div class="item1">
+					
+					<div id="browsePic">
+						<div id="displayPic">
+							<img src= "img/avatar.png" alt="">
+						</div>
+						<form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
+							<input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
+						</form>
 					</div>
-					<form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
-						<input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
-					</form>
-				</div>
-				
-				Hello <span id="username"></span>, Welcome back!
-			</div>
-		</div>
+					
+					<span id="username"></span>
 
-		<div>
+					<div id="RegisterAndLoginButton">
+						<a href="Register.html"><button>Register</button></a>
+						<a href="Login.html"><button>Login</button></a>
+					</div>
+
+					<a href="/logout" id = "LogoutButton"><button>Logout</button></a> 
+
+					<br>
+					
+					<span>
+						<a href="Snake_Leader_Board.html">Snake Game Leaderboard</a>
+						<a href="flappy_bird_game_leaderboard.html">Flappy Bird Game Leaderboard</a>
+						<a href="car_game_leaderboard.html">Bolide Game Leaderboard</a>
+					</span>
+
+						
+
+				</div>
+			</div>
+
+		<div >
 			<a href="Box_Game/index.html">Box Game</a>
 			<a href="Snake_Game/snake_game.html">Snake Game</a>
 			<a href="FlappyBird_Game/flappybird_game.html">Flappy Bird Game</a>
 			<a href="bolidegame-main/index.html">Bolide Game</a>
 		</div>
 		
-		<div>
-			<a href="Snake_Leader_Board.html">Snake Game Leaderboard</a>
-			<a href="flappy_bird_game_leaderboard.html">Flappy Bird Game Leaderboard</a>
-			<a href="car_game_leaderboard.html">Bolide Game Leaderboard</a>
-		</div>
 	</body>
 </html>
