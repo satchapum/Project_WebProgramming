@@ -104,9 +104,12 @@ hr {
 }
 
 .flex_container{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+	position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; 
+  height: 100vh;
 }
 
 #browsePic{
@@ -123,10 +126,10 @@ hr {
 }
 
 #gamePic{
-	position:static;
 	height: 375px;
 	width: 400px;
-	border-radius: 25%
+	border-radius: 25%;
+	margin-right: 10%;
 }
 
 img{
