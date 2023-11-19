@@ -9,7 +9,8 @@ body{
 .item2 { grid-area: menu; 
 	text-align: center;}
 
-.item3 { grid-area: main; }
+.item3 { grid-area: main; 
+	text-align: center;}
 
 .item4 { grid-area: footer; }
 
@@ -102,6 +103,12 @@ hr {
 	width:50px;
 }
 
+.flex_container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 #browsePic{
 	display: inline-block;
 	margin-right: 1%;
@@ -116,10 +123,10 @@ hr {
 }
 
 #gamePic{
-	height: 350px;
+	position:static;
+	height: 375px;
 	width: 400px;
-	border-radius: 25%;
-	padding: 10px;
+	border-radius: 25%
 }
 
 img{
