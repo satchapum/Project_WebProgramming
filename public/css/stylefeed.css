@@ -69,6 +69,11 @@ hr {
     padding: 0; 
 } 
 
+.headleaderboard a:hover{
+    transition: .5s;
+	color: #FEBE9A;	
+}
+
 .newsfeed{
 	display: flex;
 	width: 100%;

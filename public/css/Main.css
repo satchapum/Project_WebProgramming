@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #0C0D14;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.Header{
+    background: rgba(33, 34, 51, 0.9);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.browsePic{
+    display: flex;
+} 
+
+span#username{
+    padding: 20px;  
+}
+
+#username{
+    font-size: 100px;
+    font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+
+img#gamePic{
+    width: 300px;
+    height: 300px;
+    border-radius: 0%;
+}
+
+.game{
+    
+    position: absolute;
+    left: 0;
+    padding: 60px 0;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    
+}
+
+.game div{
+    display: flex;
+    animation: animate 20s linear infinite;
+    animation-delay: -20px;
+}
+
+.game:hover div{
+    animation-play-state: paused;
+}
+
+@keyframes animate{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+.game div img{
+    margin: 0 25px;
+    max-width: 300px;
+    border: 10px solid #fff;
+    transition: 0.25s;
+
+}
+
+.game div img:hover{
+    border: 10px solid #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.game:hover div img{
+    opacity: 0.05;
+    filter: blur(5px);
+}
+
+.game div img:hover{
+    opacity: 1;
+    filter: blur(0px);
+}
+
+
+.Footer{
+    background: #18122B;
+    position: absolute;
+    bottom: 3px;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: space-around;
+    padding: 30px;
+    
+}
+
+.Footer li{
+    position: relative;
+    list-style: none;   
+}
+
+.Footer li a{
+    display: flex;
+    align-items: center;   
+    height: 4rem;
+    background: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none; 
+    text-align: center;  
+    padding: 20px 20px;
+}
+
+.Footer a:after{
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+.Footer a:hover{
+    
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+}
+
+.Footer a:hover::after{
+    width: 100%;
+}
+
+/* CSS */
+.button-36 {
+    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    height: 4rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-36:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+  }
+  
+  @media (min-width: 768px) {
+    .button-36 {
+      padding: 0 2.6rem;
+    }
+  }

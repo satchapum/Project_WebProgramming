@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Home</title>
-		<link type="text/css" rel="stylesheet" href="css/stylefeed.css">
-		<script type="text/javascript" src="js/Index.js"></script>
-	</head>
 
-	<body>
-		<nav>
-			<div class="grid-container">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link type="text/css" rel="stylesheet" href="css/Main.css">
+	<script type="text/javascript" src="js/Index.js"></script>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
 
-				<div class="item1">
-					
-					<div id="browsePic">
-						<div id="displayPic">
-							<img src= "img/avatar.png" alt="">
-						</div>
-						<form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
-							<input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
-						</form>
-					</div>
-					
-					<span id="username"></span>
+<body>
+	<section>
+		<div class="Header">
 
-					<div id="RegisterAndLoginButton">
-						<a href="Register.html"><button>Register</button></a>
-						<a href="Login.html"><button>Login</button></a>
-					</div>
-
-					<a href="/logout" id = "LogoutButton"><button>Logout</button></a> 
-
-					<br>		
-
+			<div class="browsePic">
+				<div id="displayPic">
+					<img src="img/avatar.png" alt="">
 				</div>
+				<form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
+					<input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
+				</form>
+				<span id="username"></span>
 			</div>
 
-			<div class="grid-container">	
-				<div class="item2">
-						<span>
-							<a href="Index.html">Home</a>
-							<a href="Snake_Leader_Board.html">Snake Game Leaderboard</a>
-							<a href="flappy_bird_game_leaderboard.html">Flappy Bird Game Leaderboard</a>
-							<a href="car_game_leaderboard.html">Bolide Game Leaderboard</a>
-						</span>
-				</div>
+			<div class="Logo">
+				<img class="Logopic" src="Game_img/IMG_1160.jpg" alt="">
 			</div>
-		</nav>	
 
-		<div class="grid-container">
-			<div class="item3">
-				<div class="flex_container">
-					<a href = "Snake_Game/snake_game.html"><img id = "gamePic" src="Game_img/snakegame.png" alt = "Snake Game"/></a>
-					<a href = "FlappyBird_Game/flappybird_game.html"><img id = "gamePic" src="Game_img/flappybirdgame.png" alt = "Flappy Bird Game"/></a>
-					<a href = "bolidegame-main/index.html"><img id = "gamePic" src="Game_img/cargame.png" alt = "Bolide Game"/></a>
-					<!-- <a href="Box_Game/index.html">Box Game</a>
-					<a href="Snake_Game/snake_game.html">Snake Game</a>
-					<a href="FlappyBird_Game/flappybird_game.html">Flappy Bird Game</a>
-					<a href="bolidegame-main/index.html">Bolide Game</a> -->
+			<div class="Buttonhead">
+				<div id="RegisterAndLoginButton">
+					<a href="Register.html"><button class="button-36">Register</button></a>
+					<a href="Login.html"><button class="button-36">Login</button></a>
 				</div>
+
+				<a href="/logout" id="LogoutButton"><button class="button-36">Logout</button></a>
+
 			</div>
-		</div>	
-		
-	</body>
+		</div>
+
+		<div class="game">
+
+			<div><a href="Snake_Game/snake_game.html"><img id="gamePic" src="Game_img/528105.png"
+						alt="Snake Game" /></a>
+				<a href="FlappyBird_Game/flappybird_game.html"><img id="gamePic" src="Game_img/image.png"
+						alt="Flappy Bird Game" /></a>
+				<a href="bolidegame-main/index.html"><img id="gamePic" src="Game_img/สกรีนช็อต 2023-11-24 233200.png"
+						alt="Bolide Game" /></a>
+				<!-- <a href="Box_Game/index.html">Box Game</a>
+						<a href="Snake_Game/snake_game.html">Snake Game</a>
+						<a href="FlappyBird_Game/flappybird_game.html">Flappy Bird Game</a>
+						<a href="bolidegame-main/index.html">Bolide Game</a> -->
+			</div>
+		</div>
+
+		<ul class="Footer">
+			<li><a href="Index.html">Home</a></li>
+			<li><a href="Snake_Leader_Board.html">Snake Game Leaderboard</a></li>
+			<li><a href="flappy_bird_game_leaderboard.html">Flappy Bird Game Leaderboard</a></li>
+			<li><a href="car_game_leaderboard.html">Bolide Game Leaderboard</a> </li>
+		</ul>
+
+	</section>
+</body>
 </html>
