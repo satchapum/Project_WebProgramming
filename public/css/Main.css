@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",  "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body{
-    background-color: #0C0D14;
+    background: #f1f1f1;
+    
 }
+
+
 
 section {
     display: flex;
@@ -18,36 +21,50 @@ section {
 }
 
 .Header{
-    background: rgba(33, 34, 51, 0.9);
-    color: #fff;
+    background-color: #333; /* Add your preferred color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #eeeeee;
     position: absolute;
     top: 0;
     right: 0;
-    left: auto;
-    width: 100%;
-    padding: 10px;
     display: flex;
-    justify-content: space-between;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+	margin-left: auto;
+	margin-right: auto;
     align-items: center;
+    justify-content: space-evenly;
 }
+
+.Buttonhead{
+    padding: 10px;
+    justify-content: space-between;
+}
+
 
 .browsePic{
     display: flex;
 } 
+
+div#displayPic{
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
 span#username{
     padding: 20px;  
 }
 
 #username{
-    font-size: 100px;
+    font-size: 25px;
     font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
 }
 
 img{
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    
 }
 
 img#gamePic{
@@ -64,26 +81,17 @@ img#gamePic{
     width: 100%;
     display: flex;
     overflow: hidden;
-    
+    margin-left: auto;
+    margin-bottom: auto;
+    justify-content: center;
 }
 
 .game div{
     display: flex;
-    animation: animate 20s linear infinite;
-    animation-delay: -20px;
 }
 
 .game:hover div{
     animation-play-state: paused;
-}
-
-@keyframes animate{
-    0%{
-        transform: translateX(100%);
-    }
-    100%{
-        transform: translateX(-100%);
-    }
 }
 
 .game div img{
@@ -109,38 +117,33 @@ img#gamePic{
     filter: blur(0px);
 }
 
-
-.Footer{
-    background: #18122B;
-    position: absolute;
-    bottom: 3px;
-    display: flex;
-    gap: 30px;
-    width: 100%;
-    justify-content: space-around;
-    padding: 30px;
-    
+a{
+    text-decoration: none;
 }
 
-.Footer li{
+.Footer ,.Footer1{  
+    display: flex;
+    gap: 30px;   
+}
+
+.Footer ,.Footer1 li{
     position: relative;
     list-style: none;   
 }
 
-.Footer li a{
+.Footer ,.Footer1 li a{
     display: flex;
     align-items: center;   
-    height: 4rem;
-    background: #fff;
+    background: #eeeeee;
     color: #333;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     font-size: 16px;
     font-weight: 500;
     text-decoration: none; 
     text-align: center;  
-    padding: 20px 20px;
+    padding: 10px 10px;
 }
 
 .Footer a:after{
@@ -164,9 +167,26 @@ img#gamePic{
     width: 100%;
 }
 
+.Footer1 {
+    position: absolute;
+    top: 2px;
+    display: flex;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 90px;
+}
+
 /* CSS */
 .button-36 {
-    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    background-color: red;
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
@@ -176,7 +196,7 @@ img#gamePic{
     font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     font-size: 16px;
     font-weight: 500;
-    height: 4rem;
+    height: 3rem;
     padding: 0 1.6rem;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
@@ -191,8 +211,9 @@ img#gamePic{
     transition-duration: .1s;
   }
   
-  @media (min-width: 768px) {
-    .button-36 {
-      padding: 0 2.6rem;
-    }
+  div#RegisterAndLoginButton{
+    gap: 10px;
+    margin-left: auto;
+    margin-right: auto;
   }
+

@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+#Canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: steelblue;
+}
+
+#Birdy {
+    width: 2.9%;
+    padding-bottom: 2%;
+    background-image: url('http://flappybird.io/img/bird.png');
+    background-size: 300%;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    z-index: 150;
+}
+
+.Pipe {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 5%;
+    background: greenyellow;
+    animation: PipeMovement 15s linear;
+}
+
+.BottomPipe {
+    position: absolute;
+}
+
+#PauseButton {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    width: 3%;
+    height: 0;
+    padding-top: 1.25%;
+    padding-bottom: 1.75%;
+    background: orange;
+    border-radius: 5px;
+    font-size: 2.6vw;
+    text-align: center;
+    z-index: 50;
+    cursor: pointer;
+}
+
+#LostScoreScreen {
+    position: relative;
+    left: -50%;
+    margin-top: -70%;
+    padding: 5px 0px 5px 12px;
+    background: #ded895;
+    border-radius: 4%;
+    border: 2px solid black;
+    text-align: center;
+    display: none;
+    font-family: flappybird;
+    font-size: 2vw;
+    color: white;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    z-index: 150;
+}
+
+#CurrentScoreCard {
+    position: relative;
+    left: -50%;
+    margin-top: -700%;
+    text-align: center;
+    font-family: flappybird;
+    font-size: 4vw;
+    color: white;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    z-index: 50;
+}
+
+#DebugInfo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 250px;
+    z-index: 25;
+    background: gray;
+    opacity: 0.7;
+    color: white;
+    display: none;
+}
+
+/* Rest of your existing styles... */
+
