@@ -219,10 +219,12 @@
     #controls>span:last-child>span {
       transform: rotate(90deg);
     }
+
+    
   </style>
 
   <script>
-    window.console = window.console || function (t) { };
+    window.console = window.console || function (t) {};
   </script>
 
   <script>
@@ -233,6 +235,8 @@
 </head>
 
 <body translate="no">
+
+
   <div id="game">
     <div id="road">
       <div id="cloud"></div>
@@ -306,10 +310,8 @@
       },
 
       AUDIO: {
-        theme:
-          "https://cvws.icloud-content.com/B/AVUvfseSCK5H1F6m17t5ct5jCvC2Af-_T1AEKPVFcJh_TLk6A4xXrVMF/LHS-RLD+10+-+Chiptune+Keygen+Music.mp3?o=AoNOvu5xjk4sTMS9ery4CYmhVco2vy-5h9yIq09L_lHK&v=1&x=3&a=CAogQO78W2dIgEqlDOoF0qE_CVdPv1mIka3-24QdDAVgsCMSbxDmnvWimDEY5vvQpJgxIgEAUgRjCvC2WgRXrVMFaicouCRlEoMXqs7Itt8j0qqMW_HNn0JXWy1qqIOfUmpQE2rYuWYRqkZyJzyD6dHrzxt42Ecz8CqjzJLGjLEQIVbXmtUECl03Z9GjKr1i9clOwA&e=1690146455&fl=&r=77fcc8e5-d2a0-4e93-803c-af4abc92b1bc-1&k=1IP_COMNB0hu_4PWluGBLw&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=42&s=yiozciVCq0vMB0dSBDLCqInuvlM&cd=i",
-        engine:
-          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/155629/engine.wav",
+        theme: "https://cvws.icloud-content.com/B/AVUvfseSCK5H1F6m17t5ct5jCvC2Af-_T1AEKPVFcJh_TLk6A4xXrVMF/LHS-RLD+10+-+Chiptune+Keygen+Music.mp3?o=AoNOvu5xjk4sTMS9ery4CYmhVco2vy-5h9yIq09L_lHK&v=1&x=3&a=CAogQO78W2dIgEqlDOoF0qE_CVdPv1mIka3-24QdDAVgsCMSbxDmnvWimDEY5vvQpJgxIgEAUgRjCvC2WgRXrVMFaicouCRlEoMXqs7Itt8j0qqMW_HNn0JXWy1qqIOfUmpQE2rYuWYRqkZyJzyD6dHrzxt42Ecz8CqjzJLGjLEQIVbXmtUECl03Z9GjKr1i9clOwA&e=1690146455&fl=&r=77fcc8e5-d2a0-4e93-803c-af4abc92b1bc-1&k=1IP_COMNB0hu_4PWluGBLw&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=42&s=yiozciVCq0vMB0dSBDLCqInuvlM&cd=i",
+        engine: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/155629/engine.wav",
         honk: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/155629/honk.wav",
         beep: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/155629/beep.wav",
       },
@@ -493,7 +495,7 @@
               _self.files[key] = beatportBuffer;
               callback(key);
             },
-            function () { }
+            function () {}
           );
         };
         request.send();
@@ -604,7 +606,9 @@
         height: (_) => 0,
         special: ASSETS.IMAGE.FINISH,
       });
-      map.push({ from: Infinity });
+      map.push({
+        from: Infinity
+      });
       return map;
     }
 
@@ -684,10 +688,10 @@
 
       if (KEYS.ArrowRight)
         (hero.style.backgroundPosition = "-220px 0"),
-          (playerX += 0.007 * step * speed);
+        (playerX += 0.007 * step * speed);
       else if (KEYS.ArrowLeft)
         (hero.style.backgroundPosition = "0 0"),
-          (playerX -= 0.007 * step * speed);
+        (playerX -= 0.007 * step * speed);
       else hero.style.backgroundPosition = "-110px 0";
 
       playerX = playerX.clamp(-3, 3);
@@ -922,8 +926,9 @@
           }`;
         writeLeaderboardname("cargameleaderboard", scoreVal);
       }
-      
+
     }
+
     function getCookie(name) {
       var value = "";
       try {
@@ -957,6 +962,7 @@
       });
 
     }
+
     function init() {
       game.style.width = width + "px";
       game.style.height = height + "px";

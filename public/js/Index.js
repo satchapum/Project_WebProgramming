@@ -158,14 +158,14 @@ function showPost(data, tablename) {
     temp.className = "newsfeed";
     divTag.appendChild(temp);
     var temp1 = document.createElement("div");
+    temp1.className = "postuser";
+    temp1.innerHTML =  data[keys[i]]["username"] + " :";
+    temp.appendChild(temp1);
+    var temp1 = document.createElement("div");
     temp1.className = "postmsg";
     temp1.innerHTML = data[keys[i]]["comment_text"];
     temp.appendChild(temp1);
-    var temp1 = document.createElement("div");
-    temp1.className = "postuser";
 
-    temp1.innerHTML = "Posted by: " + data[keys[i]]["username"];
-    temp.appendChild(temp1);
   }
 }
 function showLeaderboardName(data, tablename) {

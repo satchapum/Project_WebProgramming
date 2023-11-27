@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Snake Game</title>
+  <script type="text/javascript" src="js/Index.js"></script>
+  <style>
+    html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+canvas {
+  border: 1px solid white;
+  background-color: #324A5F;
+}
+
+div.Gamecontrain{
+  background-color: #0C1821;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  padding: 20%;
+  border-radius: 10px;
+}
+
+#p1 {
+  color: #CCC9DC;
+  position: absolute;
+  /* left: 100px; */
+  top: 150px;
+  font-family: cursive;
+  font-size: x-large;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+#p2 {
+  color: #CCC9DC;
+  position: absolute;
+  /* left: 100px; */
+  top: 170px;
+  font-family: cursive;
+  font-size: x-large;
+  margin-top: 35px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#score {
+  color: yellow;
+}
+
+#high {
+  color: #E43F5A;
+}
+
+.Header {
+  background-color: #333;
+  /* Add your preferred color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #eeeeee;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.Buttonhead {
+  padding: 10px;
+  justify-content: space-between;
+}
+
+
+.browsePic {
+  display: flex;
+  
+}
+
+div#displayPic {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+span#username {
+  padding: 20px;
+}
+
+#username {
+  font-size: 25px;
+  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+.Footer,
+.Footer1 {
+  display: flex;
+  gap: 30px;
+}
+
+.Footer,
+.Footer1 li {
+  position: relative;
+  list-style: none;
+}
+
+.Footer,
+.Footer1 li a {
+  display: flex;
+  align-items: center;
+  background: #eeeeee;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.Footer a:after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+.Footer a:hover {
+
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+.Footer a:hover::after {
+  width: 100%;
+}
+
+.button-36 {
+    background-color: red;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    height: 3rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-36:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+  }
+  
+  div#RegisterAndLoginButton{
+    gap: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="Header">
+
+      <div class="browsePic">
+        <div id="displayPic">
+          <img src="img/avatar.png" alt="">
+        </div>
+        <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
+          <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
+        </form>
+        <span id="username"></span>
+      </div>
+
+      <ul class="Footer">
+        <li><a href="Index.html">Home</a></li>
+
+      </ul>
+
+
+      <div class="Buttonhead">
+        <div id="RegisterAndLoginButton">
+          <a href="Register.html"><button class="button-36">Register</button></a>
+          <a href="Login.html"><button class="button-36">Login</button></a>
+        </div>
+
+        <a href="/logout" id="LogoutButton"><button class="button-36">Logout</button></a>
+
+      </div>
+    </div>
+  </header>
+
+  <div class="Gamecontrain">
+    <p id="p1">Score:<span id="score"></span></p>
+    <p id="p2">High Score:<span id="high"></span></p>
+    <canvas width="400" height="400" id="game"></canvas>
+    <script>
+      var canvas = document.getElementById('game');
+      var context = canvas.getContext('2d');
+      var grid = 16;
+      var count = 0;
+      var score = 0;
+      var max = 0;
+
+      var snake = {
+        x: 160,
+        y: 160,
+
+        // snake velocity. moves one grid length every frame in either the x or y direction
+        dx: grid,
+        dy: 0,
+
+        // keep track of all grids the snake body occupies
+        cells: [],
+
+        // length of the snake. grows when eating an apple
+        maxCells: 4
+      };
+      var food = {
+        x: 320,
+        y: 320
+      };
+
+      // get random whole numbers in a specific range
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+      // game loop
+      function loop() {
+        requestAnimationFrame(loop);
+        // slow game loop to 15 fps instead of 60 (60/15 = 4)
+        if (++count < 4) {
+          return;
+        }
+        count = 0;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        // move snake by it's velocity
+        snake.x += snake.dx;
+        snake.y += snake.dy;
+        // wrap snake position horizontally on edge of screen
+        if (snake.x < 0) {
+          snake.x = canvas.width - grid;
+        } else if (snake.x >= canvas.width) {
+          snake.x = 0;
+        }
+
+        // wrap snake position vertically on edge of screen
+        if (snake.y < 0) {
+          snake.y = canvas.height - grid;
+        } else if (snake.y >= canvas.height) {
+          snake.y = 0;
+        }
+        // keep track of where snake has been. front of the array is always the head
+        snake.cells.unshift({
+          x: snake.x,
+          y: snake.y
+        });
+        // remove cells as we move away from them
+        if (snake.cells.length > snake.maxCells) {
+          snake.cells.pop();
+        }
+        // draw food
+        context.fillStyle = 'white';
+        context.fillRect(food.x, food.y, grid - 1, grid - 1);
+        // draw snake one cell at a time
+        context.fillStyle = '#E43F5A';
+        snake.cells.forEach(function (cell, index) {
+
+          // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
+          context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+          // snake ate food
+          if (cell.x === food.x && cell.y === food.y) {
+            snake.maxCells++;
+            score += 1;
+            document.getElementById('score').innerHTML = '&nbsp;' + score;
+            // canvas is 400x400 which is 25x25 grids 
+            food.x = getRandomInt(0, 25) * grid;
+            food.y = getRandomInt(0, 25) * grid;
+          }
+          // check collision with all cells after this one (modified bubble sort)
+          for (var i = index + 1; i < snake.cells.length; i++) {
+
+            // snake occupies same space as a body part. reset game
+            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+              if (score > max) {
+                max = score;
+                writeLeaderboardname("snakegameleaderboard", score);
+
+              }
+              snake.x = 160;
+              snake.y = 160;
+              snake.cells = [];
+              snake.maxCells = 4;
+              snake.dx = grid;
+              snake.dy = 0;
+              score = 0;
+              food.x = getRandomInt(0, 25) * grid;
+              food.y = getRandomInt(0, 25) * grid;
+              document.getElementById('high').innerHTML = '&nbsp;' + max;
+            }
+          }
+        });
+      }
+
+      function getCookie(name) {
+        var value = "";
+        try {
+          value = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith(name))
+            .split("=")[1];
+          return value;
+        } catch (err) {
+          return false;
+        }
+      }
+
+      async function writeLeaderboardname(tablename, scorenew) {
+        if (getCookie("username") === "Guest") {
+          alert('Pls login to play');
+          return;
+        }
+
+        let response = await fetch("/writeLeaderboardname", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: getCookie("username"),
+            score: scorenew,
+            tablename: tablename,
+          }),
+        });
+
+      }
+      // listen to keyboard events to move the snake
+      document.addEventListener('keydown', function (e) {
+        // prevent snake from backtracking on itself by checking that it's 
+        // not already moving on the same axis (pressing left while moving
+        // left won't do anything, and pressing right while moving left
+        // shouldn't let you collide with your own body)
+
+        // left arrow key
+        if (e.which === 37 && snake.dx === 0) {
+          snake.dx = -grid;
+          snake.dy = 0;
+        }
+        // up arrow key
+        else if (e.which === 38 && snake.dy === 0) {
+          snake.dy = -grid;
+          snake.dx = 0;
+        }
+        // right arrow key
+        else if (e.which === 39 && snake.dx === 0) {
+          snake.dx = grid;
+          snake.dy = 0;
+        }
+        // down arrow key
+        else if (e.which === 40 && snake.dy === 0) {
+          snake.dy = grid;
+          snake.dx = 0;
+        }
+      });
+      // start the game
+      requestAnimationFrame(loop);
+    </script>
+  </div>
+</body>
+
+</html>
