@@ -294,3 +294,39 @@ div.postuser{
         margin-top: 120px;
         font-size: 36px;
     }
+
+    ul.Contact{
+        background-color: #fff;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        list-style: none;
+        text-align: center;
+        margin: 0;
+      }
+    
+      ul.Contact li{
+        color: #eeeeee;
+        border: #333 10px;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+      }
+    
+      ul.Contact i {
+        font-size: 50px;
+        color: #333;
+      }
+    
+      .contactlable{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .Contacttext{
+        color: #333
+      }
