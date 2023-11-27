@@ -9,79 +9,85 @@
 </head>
 
 <body>
-    
-    <div class="grid-container">
 
-        <div class="item1">
+    <div class="Header">
 
-            <div id="browsePic">
-                <div id="displayPic">
-                    <img src="img/avatar.png" alt="">
-                </div>
-                <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
-                    <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
-                </form>
+        <div class="browsePic">
+            <div id="displayPic">
+                <img src="img/avatar.png" alt="">
             </div>
-
-            Hello <span id="username"></span>, Welcome back!
+            <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
+                <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
+            </form>
+            <span id="username"></span>
         </div>
 
-        <div id="RegisterAndLoginButton">
-            <script>readPost("birdgamecomment_1")</script>
-            <script>readPost("birdgamecomment_2")</script>
-            <script>readPost("birdgamecomment_3")</script>
-            <script>readLeaderboardName("snakegameleaderboard")</script>
-            <a href="Register.html"><button>Register</button></a>
-            <a href="Login.html"><button>Login</button></a>
-        </div>
-        <a href="/logout" id="LogoutButton">Logout</a> </div>
+        <ul class="Footer">
+            <li><a href="Index.html">Home</a></li>
 
-        <div class="container">
-            <div id="leader_Board_1">
-                <div id="birdgameleaderboard_1">
-                    <h1>Number 1</h1>
-                </div>
-                <textarea name="msg" id="textmsg_1" value="" placeholder="" rows="4" cols="50"></textarea>
-                <br>
-                <button id="birdgamecomment_1" onClick="getData(this.id, 'textmsg_1')">Post</button>
-                <button id=birdgamecomment_1" onClick="useLikeButton('birdgameleaderboard', 0)">Like</button>
+        </ul>
+
+
+        <div class="Buttonhead">
+            <div id="RegisterAndLoginButton">
+                <a href="Register.html"><button class="button-36">Register</button></a>
+                <a href="Login.html"><button class="button-36">Login</button></a>
             </div>
-            <hr>
-            <div id="birdgamecomment_1_feed-container">
-        
-            </div>
-            <hr>
-            <div id="leader_Board_2">
-                <div id="birdgameleaderboard_2">
-                    <h1>Number 2</h1>
-                </div>
-                <textarea name="msg" id="textmsg_2" value="" placeholder="" rows="4" cols="50"></textarea>
-                <br>
-                <button id="birdgamecomment_2" onClick="getData(this.id, 'textmsg_2')">Post</button>
-                <button id="birdgamecomment_2" onClick="useLikeButton('birdgameleaderboard', 1)">Like</button>
-            </div>
-            <hr>
-            <div id="birdgamecomment_2_feed-container">
-        
-            </div>
-            <hr>
-            <div id="leader_Board_3">
-                <div id="birdgameleaderboard_3">
-                    <h1>Number 3</h1>
-                </div>
-                <textarea name="msg" id="textmsg_3" value="" placeholder="" rows="4" cols="50"></textarea>
-                <br>
-                <button id="birdgamecomment_3" onClick="getData(this.id, 'textmsg_3')">Post</button>
-                <button id="birdgamecomment_3" onClick="useLikeButton('birdgameleaderboard', 2)">Like</button>
-            </div>
-            <hr>
-            <div id="birdgamecomment_3_feed-container">
-        
-            </div>
-            <hr>
+
+            <a href="/logout" id="LogoutButton"><button class="button-36">Logout</button></a>
+
         </div>
     </div>
-    
+
+    <h4>Flappy Bird Game</h4>
+
+
+    <div class="container">
+        <div id="leader_Board_1">
+            <div id="birdgameleaderboard_1">
+                <h1>Number 1</h1>
+            </div>
+            <textarea name="msg" id="textmsg_1" value="" placeholder="" rows="4" cols="50"></textarea>
+            <br>
+            <button id="birdgamecomment_1" onClick="getData(this.id, 'textmsg_1')">Post</button>
+            <button id=birdgamecomment_1" onClick="useLikeButton('birdgameleaderboard', 0)">Like</button>
+        </div>
+        <hr>
+        <div id="birdgamecomment_1_feed-container">
+
+        </div>
+        <hr>
+        <div id="leader_Board_2">
+            <div id="birdgameleaderboard_2">
+                <h1>Number 2</h1>
+            </div>
+            <textarea name="msg" id="textmsg_2" value="" placeholder="" rows="4" cols="50"></textarea>
+            <br>
+            <button id="birdgamecomment_2" onClick="getData(this.id, 'textmsg_2')">Post</button>
+            <button id="birdgamecomment_2" onClick="useLikeButton('birdgameleaderboard', 1)">Like</button>
+        </div>
+        <hr>
+        <div id="birdgamecomment_2_feed-container">
+
+        </div>
+        <hr>
+        <div id="leader_Board_3">
+            <div id="birdgameleaderboard_3">
+                <h1>Number 3</h1>
+            </div>
+            <textarea name="msg" id="textmsg_3" value="" placeholder="" rows="4" cols="50"></textarea>
+            <br>
+            <button id="birdgamecomment_3" onClick="getData(this.id, 'textmsg_3')">Post</button>
+            <button id="birdgamecomment_3" onClick="useLikeButton('birdgameleaderboard', 2)">Like</button>
+        </div>
+        <hr>
+        <div id="birdgamecomment_3_feed-container">
+
+        </div>
+        <hr>
+    </div>
+    </div>
+
 </body>
 
 </html>

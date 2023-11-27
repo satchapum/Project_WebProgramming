@@ -9,13 +9,14 @@
   <title>Bolide</title>
   <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <style>
     body {
       background: #222;
       font-family: "Press Start 2P", monospace;
       font-smooth: never;
-      height: 98vh;
+      
     }
 
     /* UI */
@@ -219,6 +220,46 @@
     #controls>span:last-child>span {
       transform: rotate(90deg);
     }
+
+    ul.Contact{
+    background-color: #fff;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    align-items: center;
+    padding: 20px;
+  }
+
+  ul.Contact li{
+    color: #eeeeee;
+    border: #333 10px;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+  }
+
+  ul.Contact i {
+    font-size: 50px;
+    color: #333;
+  }
+
+  .contactlable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  h3{
+    margin: 0;
+  }
 
     
   </style>
@@ -1027,6 +1068,19 @@
     //# sourceURL=pen.js
   </script>
   <script src="javascript/null.js"></script>
+
+  <ul class="Contact">
+    <h3>ติดต่อพวกเรา</h3>
+    <div class="contactlable">
+      <li><a class="contactpic" href="https://github.com/satchapum/Project_WebProgramming"><i
+            class='bx bxl-github'></i></a></li>
+      <li><a class="contactpic" href="https://twitter.com/fewieK"><i class='bx bxl-facebook-circle'></i></a>
+      </li>
+      <li><a class="contactpic" href="https://www.instagram.com/p/B-B1nGHgS4L/"><i
+            class='bx bxl-instagram'></i></a></li>
+      <li><a class="contactpic" href="https://twitter.com/fewieK"><i class='bx bxl-twitter'></i></a></li>
+    </div>
+  </ul>
 </body>
 
 </html>

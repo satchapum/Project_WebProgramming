@@ -126,7 +126,7 @@ a{
     gap: 30px;   
 }
 
-.Footer ,.Footer1 li{
+.Footer ,.Footer1 , li{
     position: relative;
     list-style: none;   
 }
@@ -216,4 +216,38 @@ a{
     margin-left: auto;
     margin-right: auto;
   }
+
+  ul.Contact{
+    background-color: #fff;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    bottom: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  ul.Contact li{
+    color: #eeeeee;
+    border: #333 10px;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+  }
+
+  ul.Contact i {
+    font-size: 50px;
+    color: #333;
+  }
+
+  .contactlable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
 

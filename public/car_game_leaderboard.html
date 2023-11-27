@@ -10,31 +10,37 @@
 
 <body>
     
-    <div class="grid-container">
+    <div class="Header">
 
-        <div class="item1">
+        <div class="browsePic">
+            <div id="displayPic">
+                <img src="img/avatar.png" alt="">
+            </div>
+            <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
+                <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
+            </form>
+            <span id="username"></span>
+        </div>
 
-            <div id="browsePic">
-                <div id="displayPic">
-                    <img src="img/avatar.png" alt="">
-                </div>
-                <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
-                    <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
-                </form>
+        <ul class="Footer">
+            <li><a href="Index.html">Home</a></li>
+
+        </ul>
+
+
+        <div class="Buttonhead">
+            <div id="RegisterAndLoginButton">
+                <a href="Register.html"><button class="button-36">Register</button></a>
+                <a href="Login.html"><button class="button-36">Login</button></a>
             </div>
 
-            Hello <span id="username"></span>, Welcome back!
-        </div>
+            <a href="/logout" id="LogoutButton"><button class="button-36">Logout</button></a>
 
-        <div id="RegisterAndLoginButton">
-            <script>readPost("cargamecomment_1")</script>
-            <script>readPost("cargamecomment_2")</script>
-            <script>readPost("cargamecomment_3")</script>
-            <script>readLeaderboardName("snakegameleaderboard")</script>
-            <a href="Register.html"><button>Register</button></a>
-            <a href="Login.html"><button>Login</button></a>
         </div>
-        <a href="/logout" id="LogoutButton">Logout</a> </div>
+    </div>
+
+    <h4>Bolide Game</h4>
+        
 
         <div class="container">
             <div id="leader_Board_1">
