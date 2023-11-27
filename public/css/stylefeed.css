@@ -92,13 +92,27 @@ textarea:focus {
 #leader_Board_1,
 #leader_Board_2,
 #leader_Board_3 {
-    text-align: center;
+    text-align: left;
     margin-top: 20px;
 }
 
 #snakegamecomment_1_feed-container,
 #snakegamecomment_2_feed-container,
 #snakegamecomment_3_feed-container {
+	overflow-y: scroll;
+	height: 200px;
+}
+
+#birdgamecomment_1_feed-container,
+#birdgamecomment_2_feed-container,
+#birdgamecomment_3_feed-container {
+	overflow-y: scroll;
+	height: 200px;
+}
+
+#cargamecomment_1_feed-container,
+#cargamecomment_2_feed-container,
+#cargamecomment_3_feed-container {
 	overflow-y: scroll;
 	height: 200px;
 }
