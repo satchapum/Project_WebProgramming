@@ -201,8 +201,7 @@ app.post('/writeLeaderboardname', async (req, res) => {
         'UPDATE ' + req.body.tablename + ' SET score = ? WHERE username = ? AND score < ?',
         [score, username, score],
         (updateErr, updateResult) => {
-          if (updateErr) throw updateErr;
-
+          if (updateErr) throw updateErr;;
           console.log("Score updated successfully");
         }
       );
@@ -211,7 +210,6 @@ app.post('/writeLeaderboardname', async (req, res) => {
         let insertSQL = `INSERT INTO ${req.body.tablename} (username, score, like_love) VALUES (?, ?, 0)`;
         con.query(insertSQL, [username, score], (insertErr, insertResult) => {
           if (insertErr) throw insertErr;
-
           console.log("New user added successfully");
         });
       } else {

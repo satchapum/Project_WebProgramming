@@ -578,6 +578,7 @@
                     top: '90%'
                 }, 1500, 'linear'); //Drop our birdy
                 writeLeaderboardname("birdgameleaderboard", getCookie('HighScore'));
+                setCookie('HighScore',0,30000); 
                 $('#FinalScore').html(CurrentScore); //Update the current score
                 $('#BestScore').html(Math.max(CurrentScore, cookieScore)); //Update the current score
                 $('#LostScoreScreen').slideDown(); //Have a nice slideDown for the score screen
