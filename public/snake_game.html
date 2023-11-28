@@ -3,7 +3,7 @@
 
 <head>
   <title>Snake Game</title>
-  <script type="text/javascript" src="js/Snake.js"></script>
+  <script type="text/javascript" src="js/Snake_Game.js"></script>
   <style>
     html,
 body {
@@ -332,7 +332,6 @@ a {
               if (score > max) {
                 max = score;
                 writeLeaderboardname("snakegameleaderboard", score);
-
               }
               snake.x = 160;
               snake.y = 160;
@@ -349,39 +348,6 @@ a {
         });
       }
 
-      function getCookie(name) {
-        var value = "";
-        try {
-          value = document.cookie
-            .split("; ")
-            .find((row) => row.startsWith(name))
-            .split("=")[1];
-          return value;
-        } catch (err) {
-          return false;
-        }
-      }
-
-      async function writeLeaderboardname(tablename, scorenew) {
-        if (getCookie("username") === "Guest") {
-          alert('Pls login to play');
-          return;
-        }
-
-        let response = await fetch("/writeLeaderboardname", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: getCookie("username"),
-            score: scorenew,
-            tablename: tablename,
-          }),
-        });
-
-      }
       // listen to keyboard events to move the snake
       document.addEventListener('keydown', function (e) {
         // prevent snake from backtracking on itself by checking that it's 

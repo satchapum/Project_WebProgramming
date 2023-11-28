@@ -10,6 +10,7 @@
   <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script type="text/javascript" src="Car_Game.js"></script>
 
   <style>
     body {
@@ -969,41 +970,6 @@
       }
 
     }
-
-    function getCookie(name) {
-      var value = "";
-      try {
-        value = document.cookie
-          .split("; ")
-          .find((row) => row.startsWith(name))
-          .split("=")[1];
-        return value;
-      } catch (err) {
-        return false;
-      }
-    }
-
-    async function writeLeaderboardname(tablename, scorenew) {
-      if (getCookie("username") === "Guest") {
-        alert('Pls login to play');
-        return;
-      }
-
-      let response = await fetch("/writeLeaderboardname", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: getCookie("username"),
-          score: scorenew,
-          tablename: tablename,
-        }),
-      });
-
-    }
-
     function init() {
       game.style.width = width + "px";
       game.style.height = height + "px";

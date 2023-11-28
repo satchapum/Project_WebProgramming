@@ -484,6 +484,7 @@
 
     <!-- jQuery from Google CDN -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/Bird_Game.js"></script>
     <script>
         $(function () {
             $('#InstructionBox').slideDown(); //Slide down the instructions box
@@ -504,27 +505,6 @@
                 $('#PauseButton span').removeClass('glyphicon-pause').addClass(
                     'glyphicon-play'); //Swap out the pause text with the play text
                 Paused = true; //Set paused flag to true
-            }
-
-            async function writeLeaderboardname(tablename, scorenew) {
-                if (getCookie("username") === "Guest") {
-                    alert('Pls login to play');
-                    return;
-                }
-
-                let response = await fetch("/writeLeaderboardname", {
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        username: getCookie("username"),
-                        score: scorenew,
-                        tablename: tablename,
-                    }),
-                });
-
             }
 
             function startGame() {
