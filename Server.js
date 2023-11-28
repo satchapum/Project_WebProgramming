@@ -154,18 +154,16 @@ app.post("/addLikeToUser", async (req, res) => {
   let result = await queryDB(sql);
   if (result.length == 2 && req.body.numberOfPos == 2) {
     console.log("Dont have user");
-    res.end;
-    return;
+    return res.end;
+    
   }
   else if (result.length == 1 && req.body.numberOfPos == 1) {
     console.log("Dont have user");
-    res.end;
-    return;
+    return res.end;
   }
   else if (result.length == 0) {
     console.log("Dont have user");
-    res.end;
-    return;
+    return res.end;
   }
 
   let userToUpdate = result[req.body.numberOfPos];
