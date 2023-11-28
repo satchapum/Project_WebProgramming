@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Flappy Bird</title>
     <script type="text/javascript" src="js/Index.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
         /* Load the flappybird font from an external source */
@@ -397,6 +398,40 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        ul.Contact {
+            background-color: #fff;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin-right: auto;
+            margin-left: auto;
+            position: absolute;
+            bottom: 0;
+            list-style: none;
+            text-align: center;
+            margin: 0;
+        }
+
+        ul.Contact li {
+            color: #eeeeee;
+            border: #333 10px;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+        }
+
+        ul.Contact i {
+            font-size: 50px;
+            color: #333;
+        }
+
+        .contactlable {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         
     </style>
 
@@ -406,7 +441,17 @@
         input[type=file] {
             display: none;
         }
+
+        body{
+            background-color: #eeeeee;
+        }
+
+        h3{
+            margin: 0;
+        }
     </style>
+
+
 </head>
 
 <body>
@@ -663,7 +708,7 @@
                                 top: '+=' + gravVeloc + '%'
                             }, 30,
                             'linear'
-                            ); //Stop any current animations and then drop the bird by Velocity%
+                        ); //Stop any current animations and then drop the bird by Velocity%
                         gravVeloc +=
                             gravAccel; //Add the acceleration scalar to the velocity scalar.
                         //Limit the maximum velocity of the bird
@@ -806,11 +851,11 @@
                         .width(); //Calculate the X coordinate of the pipe's right edge.
                     if (!$(this).data('scored') && BirdyBeakXPos >
                         PipeRightXPos
-                        ) { //If we're ahead of the pipe and we haven't scored on it yet, add to the score.
+                    ) { //If we're ahead of the pipe and we haven't scored on it yet, add to the score.
                         CurrentScore++; //Increment score
                         console.log(
                             CurrentScore
-                            ); //Write to console the score we currently have for debugging purposes
+                        ); //Write to console the score we currently have for debugging purposes
                         $(this).data('scored',
                             true); //Mark the pipe as scored, so we won't look at it again
                     }
@@ -851,6 +896,19 @@
             }
         });
     </script>
+
+    <ul class="Contact">
+        <h3 class="Contacttext">ติดต่อพวกเรา</h3>
+        <div class="contactlable">
+            <li><a class="contactpic" href="https://github.com/satchapum/Project_WebProgramming"><i
+                        class='bx bxl-github'></i></a></li>
+            <li><a class="contactpic" href="https://twitter.com/fewieK"><i class='bx bxl-facebook-circle'></i></a>
+            </li>
+            <li><a class="contactpic" href="https://www.instagram.com/p/B-B1nGHgS4L/"><i
+                        class='bx bxl-instagram'></i></a></li>
+            <li><a class="contactpic" href="https://twitter.com/fewieK"><i class='bx bxl-twitter'></i></a></li>
+        </div>
+    </ul>
 
 </body>
 
