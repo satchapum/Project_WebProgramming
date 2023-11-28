@@ -197,7 +197,7 @@ function showLeaderboardName(data, tablename) {
         divTag.appendChild(temp);
         var temp1 = document.createElement("H1");
         temp1.className = "LeaderBoardNumber" + currentnum;
-        temp1.innerHTML = "Name" + data[keys[i]]["username"] + " | " + "Score : " + data[keys[i]]["score"] + " | " + "Like : " + data[keys[i]]["like_love"]
+        temp1.innerHTML = "Name : " + data[keys[i]]["username"] + " | " + "Score : " + data[keys[i]]["score"] + " | " + "Like : " + data[keys[i]]["like_love"]
         temp.appendChild(temp1);
     }
 }
